@@ -17,16 +17,22 @@ const UserSchema =new  mongoose.Schema({
     }
 })
 
-UserSchema.pre('save' ,async function(next) {
-    if(!this.isModified('password')) {
+UserSchema.pre('save', async function (next) {
+    // Only hash the password if it has been modified (or is new)
+    if (!this.isModified('password')) {
         return next();
     }
-    this.password = await bcrypt.hashSync(this.password , 10)
-    next();
-})
+    try {
+        const hashedPassword = await bcrypt.hash(this.password, 10);
+        this.password = hashedPassword;
+        next();
+    } catch (error) {
+        next(error); // Pass the error to the next middleware
+    }
+});
 
-UserSchema.methods.isValidPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+UserSchema.methods.isValidPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
 }
 
 const User = mongoose.model('User' , UserSchema);

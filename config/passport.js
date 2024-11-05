@@ -1,40 +1,42 @@
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
-const User = require('../model/user')
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../model/user');
 
 passport.use(new LocalStrategy(
-    {usernameField : "email"} , 
-    async function(email, password , done) {
+    { usernameField: "email" },
+    async (email, password, done) => {
         try {
-            const user = User.findOne({email})
+            const user = await User.findOne({ email }); // Await the user query
 
-            if(!user) {
+            if (!user) {
                 return done(null, false, { message: "No User with this email" });
             }
 
-            if(!user.isValidPassword(password)) {
-                return done(null, false, { message: "Incorrect Passoword" });
+            // Use the async isValidPassword method
+            const isMatch = await user.isValidPassword(password);
+            if (!isMatch) {
+                return done(null, false, { message: "Incorrect Password" });
             }
 
-            return done(null , user);
+            return done(null, user);
         } catch (error) {
             return done(error);
         }
-    })
-)
+    }
+));
 
-passport.serializeUser((user , done) => {
+passport.serializeUser((user, done) => {
     done(null, user.id);
-})
+});
 
-passport.deserializeUser((id, done) => {
+// Use await in deserializeUser to fetch the user by ID
+passport.deserializeUser(async (id, done) => {
     try {
-      const user = User.findOne(id);   
-      done(null, user);
+        const user = await User.findById(id); // Await the user query
+        done(null, user);
     } catch (e) {
-      return done(e);
+        return done(e);
     }
 });
-  
 
-module.exports = passport; 
+module.exports = passport;
