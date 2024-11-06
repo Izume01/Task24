@@ -12,7 +12,7 @@ connectDB();
 
 app.set("view engine" , 'ejs');
 app.set("views", path.join(__dirname, "views"));
- 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -33,6 +33,7 @@ app.use(passport.session());
 
 app.use('/' , require('./routes/auth'))
 app.use('/' , require('./routes/protected-route'))
+app.use('/' , require('./routes/task'))
 
 const port = process.env.PORT; 
 
