@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
+
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="/login" method="POST">
-            <div class="form-group">
-                <label for="email">email:</label>
-                <input type="text" id="email" name="email" required>
+    <div class="container">
+        <div class="left-container">
+            <!-- You can add an image or background here -->
+        </div>
+
+        <div class="right-container">
+            <div class="login-lines">
+                <h1>Welcome Back!</h1>
+                <p>Please login to your account.</p>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                </div>
+                
+                <button type="submit">Login</button>
+                <div class="proceed-register">New here? <a href="/register">Sign up</a></div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

@@ -7,27 +7,28 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div id="todo-app"></div>
-        <h1>Todo List</h1>
-        <form id="todo-form">
-            <input type="text" id="new-task-title" placeholder="Enter task title">
-            <input type="text" id="new-task-description" placeholder="Enter task description">
-            <select id="new-task-priority">
-                <option value="High">High</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="Low">Low</option>
-            </select>
-            <button class="AddTask" type="submit">Add Task</button>
-        </form>
-        <div id="todo-list">
-            <div class="todo-item">
-                <div class="todo-item-title">Task 1</div>
-                <div class="todo-item-description">Task 1 Description</div>
-                <div class="todo-item-priority">High</div>
-                <button class="DeleteTask">Delete Task</button>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/"><i class="fa-solid fa-bars"></i><span class="tooltip">Menu</span></a></li>
+                <div class="user-sidebar">
+                    <li><a href="/about"><i class="fa-solid fa-house"></i><span class="tooltip">Home</span></a></li>
+                    <li><a href="/stats"><i class="fa-solid fa-chart-simple"></i><span class="tooltip">Statistics</span></a></li>
+                    <li class="settings"><a href="/settings"><i class="fa-solid fa-cog"></i><span class="tooltip">Settings</span></a></li>
+                    <li class="logout"><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i><span class="tooltip">Logout</span></a></li>
+                </div>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="container-task-list">
+                <h1>My Task</h1>
+                <button class="createTask">
+                    <span>New Task</span>
+                </button>
             </div>
         </div>
     </div>
     <script src="/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/41e0cd7cfa.js" crossorigin="anonymous"></script>
 </body>
 </html>
