@@ -129,7 +129,7 @@ html , body {
     width: calc(100% - 80px);
     height: 100%;
     background-color: var(--light-gray);
-    padding: 60px 40px;
+    padding: 0 40px;
     overflow-y: auto;
 }
 
@@ -137,4 +137,224 @@ html , body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    padding:  0 20px;
+    margin-top: 30px;
+}
+.container .content .container-task-list button {
+    background-color: var(--light-gray);
+    color: var(--dark-purple);
+    border: solid 1px #acacac;
+    padding: 10px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+/* Task Container */
+
+.task-container {
+    height: calc(100%); ;
+    width: calc(100%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* Custom Scroll bar  */
+
+::-webkit-scrollbar{
+	width: 10px;
+}
+
+::-webkit-scrollbar-track-piece{
+	background-color: #FFF;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: #CBCBCB;
+    outline: 2px solid #FFF;
+    outline-offset: -2px;
+    border: .1px solid #B7B7B7;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color: #909090;
+}
+
+/* Task Content */
+
+.task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.task-container .list-task {
+    width: 70%;
+    border: solid 1px #dbdbdb;
+    border-radius: 20px;
+    padding: 20px 30px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.task-container .list-task-info {
+    border: solid 1px #dbdbdb;
+    padding: 20px;
+    border-radius: 20px;
+    width: 30%;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 2px solid var(--dark-purple);
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--dark-purple);
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.list-task .task-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-task .task-display .task-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--dark-purple);
+}
+
+.list-task .task-display {
+    margin-block: 20px;
+    background-color: #f8f4ff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(59, 30, 84, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(155, 126, 189, 0.2);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.list-task .task-display:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 30, 84, 0.15);
+    background-color: #f0e6ff;
+}
+
+.list-task  {
+    background-color: white;
+}
+
+.list-task-info {
+    background-color: #f0e6ff;
+}
+
+.list-task-info .task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-task-info .task-info .task-info-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--dark-purple);
+}
+
+.list-task-info .task-info .task-info-description,
+.list-task-info .task-info .task-info-date,
+.list-task-info .task-info .task-info-time,
+.list-task-info .task-info .task-info-status {
+    font-size: 1.2rem;
+    color: #666;
+    padding: 20px 5px;
+    border-bottom: 1px solid rgba(155, 126, 189, 0.3);
+}
+
+.list-task-info .task-info .task-info-action {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.task-info-action button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editTask {
+    background-color: var(--dark-purple);
+    color: white;
+}
+
+.deleteTask {
+    background-color: #ff4444;
+    color: white;
+}
+
+.task-info-action button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.list-task-info .task-info .task-info-action {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.task-info-action button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1; /* This makes buttons take equal width */
 }
