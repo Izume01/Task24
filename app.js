@@ -4,11 +4,13 @@ const dotenv = require('dotenv')
 const passport = require('./config/passport')
 const session = require('express-session');
 const path = require('path');
+const dropdb = require('./config/dropdb')
 
 dotenv.config();
 
 const app = express();
 connectDB();
+dropdb();
 
 app.set("view engine" , 'ejs');
 app.set("views", path.join(__dirname, "views"));

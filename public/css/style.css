@@ -360,3 +360,104 @@ input[type="checkbox"]:checked::after {
     transition: all 0.3s ease;
     flex: 1; /* This makes buttons take equal width */
 }
+
+/* Overlay */
+
+/* Button styles */
+#openOverlayBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Overlay background */
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 1000; /* Overlay above all other elements */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overlay content */
+.overlay-content {
+    background: #fff;
+    padding: 20px;
+
+    width: 600px;
+    max-width: 90%;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* Create Task Overlay */
+.overlay-content-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--dark-purple);
+}
+
+.createTaskForm {
+    margin-block: 20px;
+}
+
+.createTaskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.createTaskForm input {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.createTaskForm input:focus {
+    outline: none;
+    border-color: var(--dark-purple);
+}
+
+.createTaskForm select {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.createTaskForm select:focus {
+    outline: none;
+    border-color: var(--dark-purple);
+}
+
+.createTaskForm button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--dark-purple);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}

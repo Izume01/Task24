@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const e = require('express')
-
+const nodeschedule = require('node-schedule')
 dotenv.config()
 
 const connectDB = async () => {
