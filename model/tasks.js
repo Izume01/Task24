@@ -23,8 +23,11 @@ const TaskSchema = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId, 
         ref: 'User' ,
         required : true
-    }
-    
+    }, 
+    Checked : {
+        type : Boolean, 
+        default : false
+    }    
 })
 
 const Task = mongoose.model('Tasks' , TaskSchema) 

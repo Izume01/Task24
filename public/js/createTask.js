@@ -4,7 +4,8 @@ const priority = document.querySelector('.Create-priority');
 
 const createTaskBtn = document.querySelector('.Create-Task')
 
-createTaskBtn.addEventListener('click', async ()=> {
+createTaskBtn.addEventListener('click', async (event)=> {
+    event.preventDefault();
     const task = {
         title: title.value,
         description: description.value,

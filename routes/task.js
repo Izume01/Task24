@@ -1,7 +1,9 @@
 const express = require('express');
-const task = require('../model/tasks');
+const { toggleTaskStatus } = require('../controller/taskController');
+const Task = require('../model/tasks');
 const router = express.Router();
 
+// Create a new task
 router.post('/task', async (req, res) => {
     const { title, description, priority } = req.body;
 
@@ -10,24 +12,25 @@ router.post('/task', async (req, res) => {
     }
 
     try {
-        const newTask = new task({
+        const newTask = new Task({
             title,
             description,
             priority,
-            createdBy: req.user._id
+            createdBy: req.user._id // Assumes user is authenticated
         });
 
         await newTask.save();
         res.status(201).json({ message: 'Task created successfully' });
     } catch (error) {
         console.error(error);
-        return res.status(401).json({ message: 'Error in creating task' });
+        return res.status(500).json({ message: 'Error in creating task' });
     }
 });
 
+// Fetch all tasks of a user
 router.get('/task', async (req, res) => {
     try {
-        const tasks = await task.find({ createdBy: req.user._id });
+        const tasks = await Task.find({ createdBy: req.user._id });
         res.json(tasks);
     } catch (error) {
         console.error(error);
@@ -35,57 +38,50 @@ router.get('/task', async (req, res) => {
     }
 });
 
-router.get('/task/:id', async (req, res) => {
+// Get a specific task by task ID
+router.get('/task/getTask/:taskid', async (req, res) => {
+    const { taskid } = req.params;
     try {
-        const userid = req.params.id;
-        console.log(userid);    
-        
-        const displaytask = await task.find({createdBy: userid});  
-        if (!displaytask) {
+        const task = await Task.findById(taskid);
+        if (!task) {
             return res.status(404).json({ message: 'Task not found' });
         }
-        res.json(displaytask);
+        res.json(task);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error retrieving task' });
     }
 });
 
-router.get('/task/getTask/:taskid', async (req, res) => {
-    try {
-        const taskid = req.params.taskid;
-        console.log(taskid);    
-        
-        const displaytask = await task.find({_id: taskid});  
-        if (!displaytask) {
-            return res.status(404).json({ message: 'Task not found' });
-        }
-        res.json(displaytask);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error retrieving task' });
-    }
-})
-
+// Update task (title, description, priority)
 router.put('/task/:id', async (req, res) => {
     const { title, description, priority } = req.body;
     try {
-        await task.findByIdAndUpdate(req.params.id, { title, description, priority });
-        res.json({ message: 'Task updated' });
+        const updatedTask = await Task.findByIdAndUpdate(req.params.id, { title, description, priority }, { new: true });
+        if (!updatedTask) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+        res.json({ message: 'Task updated', updatedTask });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error updating task' });
     }
 });
 
+// Delete task
 router.delete('/task/:id', async (req, res) => {
     try {
-        await task.findByIdAndDelete(req.params.id);
+        const deletedTask = await Task.findByIdAndDelete(req.params.id);
+        if (!deletedTask) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
         res.json({ message: 'Task deleted' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error deleting task' });
     }
 });
+
+router.put('/task/:taskId/toggle', toggleTaskStatus);
 
 module.exports = router;

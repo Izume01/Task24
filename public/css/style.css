@@ -461,3 +461,56 @@ input[type="checkbox"]:checked::after {
     font-weight: 600;
     transition: all 0.3s ease;
 }
+
+
+/* Edit Task Overlay */
+.editTaskForm {
+    margin-block: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.editTaskForm input {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.editTaskForm input:focus {
+    outline: none;
+    border-color: var(--dark-purple);
+}
+
+.editTaskForm select {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.editTaskForm select:focus {
+    outline: none;
+    border-color: var(--dark-purple);
+}
+
+.editTaskForm button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--dark-purple);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.editTaskForm button:hover {
+    background-color: var(--dark-purple-2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
