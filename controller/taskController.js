@@ -3,8 +3,10 @@ const Task = require('../model/tasks');
 // Toggle task completion (mark as done / unmark)
 const toggleTaskStatus = async (req, res) => {
     try {
-        const taskId = req.params.id; // Get task ID from URL parameters
+        const taskId = req.params.taskId; // Get task ID from URL parameters
 
+        console.log(taskId);
+        
         // Find the task by ID and toggle the Checked field
         const task = await Task.findById(taskId);
 

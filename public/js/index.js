@@ -61,7 +61,9 @@ const handleTaskClick = () => {
                 if (!response.ok) throw new Error("Failed to fetch task details");
 
                 const data = await response.json();
-                updateData(data[0]);
+                console.log('Task details:', data);
+                
+                updateData(data);
 
                 editTaskBtn.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -85,7 +87,7 @@ const toggleTaskStatus = async (taskId, checkbox) => {
     };
 
     try {
-        const response = await fetch(`/tasks/${taskId}/toggle`, {
+        const response = await fetch(`/task/${taskId}/toggle`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,6 +105,8 @@ const toggleTaskStatus = async (taskId, checkbox) => {
 
 // Update task details in the UI
 const updateData = (data) => {
+    console.log('Data:', data);
+    
     if (!data) {
         console.error("No data received for update");
         return;
