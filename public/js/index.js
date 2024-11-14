@@ -183,5 +183,4 @@ async function editTaskDetails(id) {
         console.error("Error details:", error);
     }
 }
-
 displaytask();

@@ -30,12 +30,14 @@ app.use(
     })
 )
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/' , require('./routes/auth'))
 app.use('/' , require('./routes/protected-route'))
 app.use('/' , require('./routes/task'))
+app.use('/' , require('./routes/stats'))
 
 const port = process.env.PORT; 
 
