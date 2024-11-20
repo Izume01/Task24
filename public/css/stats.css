@@ -28,13 +28,9 @@ body {
 .sidebar ul li a {
     color: #ecf0f1;
     display: block;
-    padding: 20px 0;
+    
     text-align: center;
     position: relative;
-}
-
-.sidebar ul li a:hover {
-    background-color: #34495e;
 }
 
 .tooltip {

@@ -6,6 +6,8 @@ const session = require('express-session');
 const path = require('path');
 const dropdb = require('./config/dropdb')
 
+const cors = require('cors');
+
 dotenv.config();
 
 const app = express();
@@ -18,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors());
 
 app.use(
     session({
@@ -37,7 +40,7 @@ app.use(passport.session());
 app.use('/' , require('./routes/auth'))
 app.use('/' , require('./routes/protected-route'))
 app.use('/' , require('./routes/task'))
-app.use('/' , require('./routes/stats'))
+app.use('/api' , require('./routes/stats'))
 
 const port = process.env.PORT; 
 
