@@ -66,33 +66,42 @@ Task24/
 │   ├── dropdb.js          # Database drop script
 │   └── passport.js        # Passport configuration for authentication
 ├── controller/            # Controllers for business logic
+│   ├── statsController.js # Stats controller
 │   └── taskController.js  # Task controller
 ├── LICENSE                # License file (MIT)
 ├── model/                 # Mongoose models
+│   ├── stats.js           # Stats model
 │   ├── tasks.js           # Task model
 │   └── user.js            # User model
+├── package-Sel.json       # Package metadata and dependencies (Sel environment)
 ├── package.json           # Project metadata and dependencies
+├── pnpm-lock-Sel.yaml     # pnpm lock file (Sel environment)
 ├── pnpm-lock.yaml         # pnpm lock file
 ├── public/                # Static files (CSS, JavaScript)
 │   ├── css/
 │   │   ├── login.css
 │   │   ├── register.css
+│   │   ├── stats.css
 │   │   └── style.css
 │   └── js/
 │       ├── createTask.js
 │       ├── editTaskOverlay.js
 │       ├── index.js
 │       ├── overlay.js
-│       └── UpdateCheck.js
+│       ├── UpdateCheck.js
+│       └── fetchData.js   # Fetch data script
 ├── routes/                # Express route handlers
 │   ├── auth.js            # Authentication routes
 │   ├── protected-route.js # Protected routes middleware
+│   ├── stats.js           # Stats routes
 │   └── task.js            # Task routes
 └── views/                 # EJS templates for rendering HTML
+    ├── index-Sel.ejs      # Homepage (Sel environment)
     ├── index.ejs          # Homepage
     ├── login.ejs          # Login page
-    └── register.ejs       # Registration page
-
+    ├── register.ejs       # Registration page
+    ├── setting.ejs        # Setting page
+    └── statistics.ejs     # Statistics page
 ```
 
 - app.js: Main application file.
