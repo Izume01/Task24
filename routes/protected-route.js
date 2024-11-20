@@ -20,4 +20,8 @@ router.get('/stats' , isAuthenticated, (req , res) => {
   res.render('statistics', {user : req.user});
 })
 
+router.get('/setting' , isAuthenticated , (req,res)=> {
+    res.render('setting' , {user : req.user})
+})
+
 module.exports = router;

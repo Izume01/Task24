@@ -41,6 +41,7 @@ app.use('/' , require('./routes/auth'))
 app.use('/' , require('./routes/protected-route'))
 app.use('/' , require('./routes/task'))
 app.use('/api' , require('./routes/stats'))
+app.use('/' , require('./routes/setting'))
 
 const port = process.env.PORT; 
 
