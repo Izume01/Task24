@@ -6,6 +6,7 @@ const router = express.Router();
 router.put('/update', async (req, res) => {
     const {username, email, password } = req.body;
     const userId = req.user._id;
+    
     console.log(username, email, password);
     try {
         const user = await User.findById(userId);
@@ -20,6 +21,7 @@ router.put('/update', async (req, res) => {
         await user.save();
         res.send('User updated successfully');
     } catch (error) {
+        console.error(error);
         res.status(500).send('Server error');
     }
 });
