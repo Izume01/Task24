@@ -134,6 +134,7 @@ const updateData = (data) => {
 // Deletion
 const deleteTask = async(id) => {
     try {
+        // check
         const response = await fetch(`/task/${id}`, {
             method: 'DELETE',
             headers: {
